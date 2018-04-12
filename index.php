@@ -15,7 +15,8 @@ if (!isset($_SESSION)) {
 
 	
 function redirect($url){
-	print('<script type="text/javascript">window.location.href=\'?page='.$url.'\'</script>');
+	$stampa = print('<script type="text/javascript">window.location.href=\'?page='.$url.'\'</script>');
+	echo $stampa;
 	die();
 }
 //print_r($_SESSION); die;
