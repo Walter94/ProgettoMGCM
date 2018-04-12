@@ -7,11 +7,12 @@ if (!isset($_SESSION)) {
 }
 
 $db = mysqli_connect('localhost', 'root', '')
-	or die("MySql connection error, please contact us at help@sensor.it");
-
-	$_SESSION['db'] = $db;
-
-	mysqli_select_db($db, 'adminlte');
+	if(!($db = mysqli_connect("localhost", "root", ""))) {
+		trigger_error("MySql connection error, please contact us at help@sensor.it");
+	} else {
+		$_SESSION['db'] = $db;
+		mysqli_select_db($db, 'adminlte');
+	}
 
 
 function redirect($url){
