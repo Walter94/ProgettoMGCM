@@ -16,7 +16,7 @@ if (!isset($_SESSION)) {
 	
 function redirect($url){
 	print('<script type="text/javascript">window.location.href=\'?page='.$url.'\'</script>');
-	die(mysql_error());
+	die();
 }
 //print_r($_SESSION); die;
 if (!isset($_GET['page'])) { $_GET['page']='dashboard'; }
