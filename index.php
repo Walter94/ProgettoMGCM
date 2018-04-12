@@ -6,18 +6,17 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 
-$db = mysqli_connect('localhost', 'root', '')
-	if(!($db = mysqli_connect("localhost", "root", ""))) {
-		trigger_error("MySql connection error, please contact us at help@sensor.it");
-	} else {
-		$_SESSION['db'] = $db;
-		mysqli_select_db($db, 'adminlte');
+	if(!($db = mysqli_connect('localhost', 'root', ''))) {
+		trigger_error("MySql connection error, please contact us at help@sensor.it", E_USER_NOTICE);
 	}
+	
+	$_SESSION['db'] = $db;
+	mysqli_select_db($db, 'adminlte');
 
-
+	
 function redirect($url){
 	print('<script type="text/javascript">window.location.href=\'?page='.$url.'\'</script>');
-	die();
+	die(mysql_error());
 }
 //print_r($_SESSION); die;
 if (!isset($_GET['page'])) { $_GET['page']='dashboard'; }
